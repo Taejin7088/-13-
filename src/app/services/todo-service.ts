@@ -36,3 +36,22 @@ export const createTodo = async (newTodo: Omit<Todo, 'id'>): Promise<Todo> => {
     throw error;
   }
 };
+
+export const updateTodo = async (todo: Todo): Promise<Todo> => {
+  try {
+    const res = await fetch(`${URL.TODOS}/${todo.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todo),
+    });
+
+    if (!res.ok) {
+      throw new Error('서버 응답 오류: ' + res.status);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
