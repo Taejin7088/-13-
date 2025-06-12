@@ -3,7 +3,7 @@ import { Todo } from '../types/todo';
 
 export const getTodos = async (): Promise<Todo[]> => {
   try {
-    const res = await fetch(URL.TODOS);
+    const res = await fetch(URL.TODOS, { cache: 'no-store' });
 
     if (!res.ok) {
       throw new Error('서버 응답 오류: ' + res.status);
