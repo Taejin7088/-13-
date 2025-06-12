@@ -1,9 +1,26 @@
+import { COMPLETION_STATUS, CompletionStatus } from '../constants/query-key';
 import { URL } from '../constants/url';
 import { Todo } from '../types/todo';
 
-export const getTodos = async (): Promise<Todo[]> => {
+export const getTodosUrl = (status: CompletionStatus): string => {
+  switch (status) {
+    case COMPLETION_STATUS.COMPLETED:
+      return `${URL.TODOS}?completed=true`;
+    case COMPLETION_STATUS.INCOMPLETE:
+      return `${URL.TODOS}?completed=false`;
+    case COMPLETION_STATUS.ALL:
+    default:
+      return URL.TODOS;
+  }
+};
+
+export const getTodos = async (
+  completionStatus: CompletionStatus
+): Promise<Todo[]> => {
+  const apiUrl = getTodosUrl(completionStatus);
+
   try {
-    const res = await fetch(URL.TODOS, { cache: 'no-store' });
+    const res = await fetch(apiUrl, { cache: 'no-store' });
 
     if (!res.ok) {
       throw new Error('서버 응답 오류: ' + res.status);
