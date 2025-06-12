@@ -3,14 +3,14 @@
 import React from 'react';
 import TodoItem from './todo-item';
 import { useGetTodosQuery } from '@/hooks/use-get-todos-query';
-import { COMPLETION_STATUS } from '../constants/query-key';
+import { CompletionStatus } from '../constants/query-key';
 
-const TodoList = () => {
-  const {
-    data: todos,
-    isPending,
-    error,
-  } = useGetTodosQuery(COMPLETION_STATUS.ALL);
+type Props = {
+  status: CompletionStatus;
+};
+
+const TodoList = ({ status }: Props) => {
+  const { data: todos, isPending, error } = useGetTodosQuery(status);
 
   if (isPending) return <div>로딩중입니다...</div>;
   if (error) return <div>에러가 발생했습니다. {error.message}</div>;
