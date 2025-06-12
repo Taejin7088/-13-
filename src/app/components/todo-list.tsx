@@ -16,7 +16,7 @@ const TodoList = ({ status }: Props) => {
   if (error) return <div>에러가 발생했습니다. {error.message}</div>;
 
   return (
-    <ul>
+    <ul className='space-y-4'>
       {todos.map((todo) => {
         return <TodoItem key={todo.id} todo={todo} />;
       })}

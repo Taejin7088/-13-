@@ -28,7 +28,7 @@ const AddTodoForm = () => {
   const isDisable = isPending || !title.trim();
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-2'>
       <input
         type='text'
         placeholder='할 일 입력'
@@ -38,9 +38,13 @@ const AddTodoForm = () => {
           setTitle(e.target.value);
         }}
         disabled={isPending}
+        className='flex-1 border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100'
       />
-
-      <button type='submit' disabled={isDisable}>
+      <button
+        type='submit'
+        disabled={isDisable}
+        className='bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50'
+      >
         {isPending ? '추가 중...' : '추가'}
       </button>
     </form>

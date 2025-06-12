@@ -16,8 +16,12 @@ const SelectCompletionStatus = ({ status }: Props) => {
   };
 
   return (
-    <div role='radiogroup' aria-label='투두 필터'>
-      <label>
+    <div
+      role='radiogroup'
+      aria-label='투두 필터'
+      className='flex flex-wrap gap-2 justify-center sm:justify-start'
+    >
+      <label className='flex items-center gap-1'>
         <input
           type='radio'
           name='completionStatus'
@@ -28,7 +32,7 @@ const SelectCompletionStatus = ({ status }: Props) => {
         전체보기
       </label>
 
-      <label>
+      <label className='flex items-center gap-1'>
         <input
           type='radio'
           name='completionStatus'
@@ -39,7 +43,7 @@ const SelectCompletionStatus = ({ status }: Props) => {
         완료된 투두보기
       </label>
 
-      <label>
+      <label className='flex items-center gap-1'>
         <input
           type='radio'
           name='completionStatus'

@@ -34,11 +34,13 @@ const Page = async ({ searchParams }: Props) => {
   });
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <SelectCompletionStatus status={status} />
-      <AddTodoForm />
-      <TodoList status={status} />
-    </HydrationBoundary>
+    <main className='max-w-2xl mx-auto p-4 space-y-6'>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <SelectCompletionStatus status={status} />
+        <AddTodoForm />
+        <TodoList status={status} />
+      </HydrationBoundary>
+    </main>
   );
 };
 
